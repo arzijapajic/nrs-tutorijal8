@@ -5,9 +5,14 @@ var express = require('express');
 var path = require("path");
 var bodyParser = require("body-parser");
 
+
+
+
+
 var app = express();
 app.use(bodyParser.json());
 var server = http.createServer(app);
+
 let db = new sqlite3.Database('./baza.db', (err) => {
     if (err) {
         return console.error(err.message);
@@ -15,6 +20,7 @@ let db = new sqlite3.Database('./baza.db', (err) => {
     db.run('CREATE TABLE IF NOT EXISTS grad(ID INTEGER, NAZIV TEXT, BROJ_STANOVNIKA INTEGER)');
     console.log('Connected.');
 });
+
 
 app.post('/grad', function(req, res) {
     db.serialize(() => {

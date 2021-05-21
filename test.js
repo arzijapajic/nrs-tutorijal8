@@ -33,6 +33,28 @@ describe('Gradovi', () => {
             db.run('DELETE FROM grad WHERE ID IN(1, 2, 3, 4, 5,6);');
         });
     })
+    beforeEach(() => {
+        let db = new sqlite3.Database('./baza.db', sqlite3.OPEN_READWRITE, (err) => {
+            if (err) {
+                console.error(err.message);
+            }
+            console.log('Connected.');
+
+        });
+    })
+
+    afterEach(() => {
+        let db = new sqlite3.Database('./baza.db', sqlite3.OPEN_READWRITE, (err) => {
+            if (err) {
+                console.error(err.message);
+            }
+            console.log('Connected.');
+
+        });
+    })
+
+
+
 
     describe('/GET', () => {
         it('Prikaz svih gradova(OK)', (done) => {
