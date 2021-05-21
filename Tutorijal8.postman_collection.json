@@ -1,0 +1,83 @@
+{
+    "info": {
+        "_postman_id": "94e2856c-8c62-474d-b035-0c7ad5e191d1",
+        "name": "Tutorijal8",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [{
+            "name": "GetRequest",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": ""
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "PostRequest",
+            "event": [{
+                "listen": "test",
+                "script": {
+                    "id": "af46a5ce-4e62-464a-a60a-a5f6620e0ede",
+                    "exec": [
+                        "pm.test(\"Dodavanje novog grada\", () => {\r",
+                        "  pm.expect(pm.response.code).to.eql(200);\r",
+                        "});"
+                    ],
+                    "type": "text/javascript"
+                }
+            }],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:3000/grad",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "grad"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DeleteRequest",
+            "event": [{
+                "listen": "test",
+                "script": {
+                    "id": "d475ed65-28bf-4431-b2d9-e1a48b330ca7",
+                    "exec": [
+                        "pm.test(\"Brisanje grada s id=2\", () => {\r",
+                        "  pm.expect(pm.response.text()).to.include(\"Grad je obrisan\");\r",
+                        "});"
+                    ],
+                    "type": "text/javascript"
+                }
+            }],
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:3000/gradovi/2",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "gradovi",
+                        "2"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "protocolProfileBehavior": {}
+}
